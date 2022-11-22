@@ -5,16 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Library</title>
 </head>
 <body>
     <div class="header">
-        Alli's Library
+        <h1>📚 Alli's Library 📚</h1>
     </div>
     <div class="sidebar">
-        <div class="book-form">
-
+        <div id="book-form">
+            <form>
+                <div>
+                    <label for="title">Title</label><br>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div>
+                    <label for="author">Author</label><br>
+                    <input type="text" id="author" name="author" required>
+                </div>
+                <div>
+                    <label for="pages">Total Pages</label><br>
+                    <input type="number" id="pages" name="pages" min="1" required>
+                </div>
+                <div>
+                    <label for="have-read">Read?</label><br>
+                    <label class="switch">
+                        <input type="checkbox" id="have-read" name="have-read" required>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <br>
+                <button type="submit">Add Book</button>
+            </form>
         </div>
     </div>
     <div class="main">
