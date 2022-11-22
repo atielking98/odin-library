@@ -5,44 +5,63 @@ constructor(
     title = 'Unknown',
     author = 'Unknown',
     pages = 0,
-    isRead = false
+    haveRead = false
 ) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.isRead = isRead
+    this.haveRead = haveRead
 }
 }
 
 class Library {
     constructor() {
-        this.myBooks = [];
+        this.books = [];
     }
     addBook(newBook) {
+        console.log(newBook);
         if (!this.isInLibrary(newBook)) {
-            this.myBooks.push(newBook);
+            this.books.push(newBook);
             console.log("Book Added!");
         }
     }
 
+    removeBook(title) {
+        this.books = this.books.filter((book) => book.title !== title);
+    }
+
     isInLibrary(newBook) {
-        return this.myBooks.some((book) => book.title === newBook.title)
+        return this.books.some((book) => book.title === newBook.title);
     }
 }
 
+function createBookCard(book) {
+  const bookCard = document.createElement('div');
+  const title = document.createElement('p');
+  const author = document.createElement('p');
+  const pages = document.createElement('p');
+  const buttonGroup = document.createElement('div');
+  const readBtn = document.createElement('button');
+  const removeBtn = document.createElement('button');
+}
 
 function displayBooks() {
+    resetBookCards();
     myLibrary.forEach((book) => {
-        return book;
+        createBookCard(book);
     })
+}
+
+function resetBookCards() {
+    bookCards.innerHTML = '';
 }
 
 const getBookFromInput = () => {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
-    const isRead = document.getElementById('have-read').checked;
-    return new Book(title, author, pages, isRead);
+    const haveRead = document.getElementById('have-read').checked;
+    return new Book(title, author, pages, haveRead);
   }
   
 const addBook = (e) => {
@@ -52,6 +71,6 @@ const addBook = (e) => {
 }
 
 const library = new Library();
-
+const bookCards = document.querySelector('book-cards');
 const addBookForm = document.getElementById('book-form');
 addBookForm.onsubmit = addBook;
